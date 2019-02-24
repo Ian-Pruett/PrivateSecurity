@@ -18,13 +18,15 @@ def geolocation(addr):
     geolocator = Nominatim()
     geolocator.urlopen = uo
     location = geolocator.geocode(addr)
-    return location.latitude, location.longitude
-
+    return location
 
 @users.route('/create', methods=['GET', 'POST'])
 def create():
     print(request.json)
     user = User(**request.json)
+    user.status = False
+    user.latitude = 0
+    user.longitude = 0
     pw_hash = bcrypt.generate_password_hash(user.password).decode('utf-8')
     user.password = pw_hash
     location = geolocation(user.address)
@@ -45,7 +47,7 @@ def create():
         'validAddress': True,
         'validPhoneNumber': True,
         'validEmail': True,
-        'user': jsonify(row_to_user(user))
+        'user': row_to_user(user)
         }), 200
 
 
@@ -78,9 +80,12 @@ def update_location():
     db.session.add(user)
     db.session.commit()
     db.session.refresh(user)
-    return jsonify({'status': 1}), 200
-    
-     
+    return jsonify({
+        'status': 1,
+        'atHome': user.status
+    }), 200
+
+
 def row_to_user(row):
     return {
         'status': 1,

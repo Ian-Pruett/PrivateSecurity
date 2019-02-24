@@ -6,3 +6,4 @@ flask-script
 flask-testing
 geopy
 gunicorn
+certifi
