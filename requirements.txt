@@ -5,3 +5,4 @@ flask-bcrypt
 flask-script
 flask-testing
 geopy
+gunicorn
