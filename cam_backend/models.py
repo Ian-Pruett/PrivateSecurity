@@ -1,5 +1,5 @@
 from flask import current_app
-from Cam_Backend import db
+from cam_backend import db
 
 
 class User(db.Model):
@@ -8,17 +8,10 @@ class User(db.Model):
     device_registration = db.Column(db.String(8), unique=True)
     email = db.Column(db.String(64), nullable=False)
     address = db.Column(db.String(128), nullable=False)
-    current_location = db.Column(db.String(128))
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     phone_num = db.Column(db.String(16), nullable=False)
     firstName = db.Column(db.String(64), nullable=False)
     lastName = db.Column(db.String(64), nullable=False)
     password = db.Column(db.String(64), nullable=False)
-
-
-class Video(db.Model):
-    # __tablename__ = 'videos'
-    pass
-
-
-class Picture(db.Model):
-    pass
+    status = db.Column(db.Boolean)
