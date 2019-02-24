@@ -12,7 +12,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     Button register;
     EditText fname,lName,phone, password,email, address;
-    TextView back;
+    Button back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         lName = (EditText)findViewById(R.id.LName);
         address = (EditText) findViewById(R.id.Address);
         register = (Button)findViewById(R.id.Register);
-        back = (TextView)findViewById(R.id.Back);
+        back = (Button)findViewById(R.id.Back);
 
         register.setOnClickListener(this);
         back.setOnClickListener(this);

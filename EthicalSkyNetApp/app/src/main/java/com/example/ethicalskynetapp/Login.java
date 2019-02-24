@@ -12,7 +12,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     Button Login;
     EditText email, password;
-    TextView back;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         email = (EditText)findViewById(R.id.Email);
         password = (EditText)findViewById(R.id.Password);
         Login = (Button) findViewById(R.id.Login);
-        back = (TextView) findViewById(R.id.Back);
+        back = (Button) findViewById(R.id.Back);
 
         Login.setOnClickListener(this);
         back.setOnClickListener(this);
